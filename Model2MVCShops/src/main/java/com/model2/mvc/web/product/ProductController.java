@@ -35,12 +35,12 @@ public class ProductController {
 	// ==> classpath:config/common.properties , classpath:config/commonservice.xml
 	// 참조 할것
 	// ==> 아래의 두개를 주석을 풀어 의미를 확인 할것
-	// @Value("#{commonProperties['pageUnit']}")
-	 @Value("#{commonProperties['pageUnit'] ?: 10}")
+	 @Value("#{commonProperties['pageUnit']}")
+	//@Value("#{commonProperties['pageUnit'] ?: 10}")
 	int pageUnit;
 
-	// @Value("#{commonProperties['pageSize']}")
-	 @Value("#{commonProperties['pageSize'] ?: 10}")
+	@Value("#{commonProperties['pageSize']}")
+	//@Value("#{commonProperties['pageSize'] ?: 10}")
 	int pageSize;
 
 	@RequestMapping("/addProductView.do")
@@ -116,7 +116,9 @@ public class ProductController {
 
 		String choice = request.getParameter("menu");
 		String userId = request.getParameter("userId");
-
+		
+		System.out.println("---->" + map.get("list"));
+		
 		// Model 과 View 연결
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);

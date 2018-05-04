@@ -25,7 +25,7 @@ public class ProductServiceTest {
 	@Qualifier("productServiceImpl")
 	private ProductService productService;
 	
-	@Test
+	//@Test
 	public void testAddProduct() throws Exception {
 		
 		Product product = new Product();
@@ -44,12 +44,12 @@ public class ProductServiceTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void testGetProduct() throws Exception {
 		
 		Product product = new Product();
 		
-		product = productService.getProduct(20000);
+		product = productService.getProduct(25000);
 		
 		System.out.println("testGetProduct");
 		System.out.println(product);
