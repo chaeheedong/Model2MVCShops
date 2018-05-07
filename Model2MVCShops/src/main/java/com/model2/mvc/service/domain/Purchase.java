@@ -2,8 +2,10 @@ package com.model2.mvc.service.domain;
 
 import java.sql.Date;
 
+import com.model2.mvc.common.Search;
 
-public class Purchase {
+
+public class Purchase extends Search {
 	
 	private User buyer;
 	private String divyAddr;

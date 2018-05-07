@@ -42,4 +42,31 @@
 		</association>
 	</resultMap>
 	
+	<insert id="addPurchase" parameterType="purchase">
+		INSERT 
+		INTO transaction(tran_no, 
+						 prod_no, 
+						 buyer_id, 
+						 payment_option, 
+						 receiver_name, 
+						 receiver_phone, 
+						 demailaddr, 
+						 dlvy_request, 
+						 tran_status_code, 
+						 order_data, 
+						 dlvy_date) 
+		VALUES (
+					seq_transaction_tran_no.NEXTVAL, 
+					#{purchaseProd.prodNo:INTEGER}, 
+					#{buyer.userId:VARCHAR}, 
+					#{paymentOption:CHAR}, 
+					#{receiverName:VARCHAR}, 
+					#{receiverPhone:VARCHAR}, 
+					#{divyAddr:VARCHAR}, 
+					#{divyRequest:VARCHAR}, 
+					#{tranCode:CHAR}, 
+					SYSDATE, 
+					#{divyDate:DATE} )
+	</insert>
+	
 </mapper>
