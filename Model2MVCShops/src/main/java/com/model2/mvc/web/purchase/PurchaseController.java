@@ -1,5 +1,6 @@
 package com.model2.mvc.web.purchase;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,14 +43,16 @@ public class PurchaseController {
 	int pageSize;
 	
 	@RequestMapping("/addPurchaseView.do")
-	public ModelAndView addProduct(@RequestParam("prod_no") int prodNo, HttpSession session) throws Exception {
+	public String addProduct(HttpServletRequest req, HttpSession session) throws Exception {
+		
+		String prodNoChange = req.getParameter("prod_no");
+		int prodNo = Integer.parseInt(prodNoChange);
 		
 		Product product = productService.getProduct(prodNo);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("product", product);
-		mav.setViewName("purchase/addPurchaseView.jsp");
-		return mav;
+		req.setAttribute("product", product);
+		
+		return "forward:/purchase/addPurchaseView.jsp";
 		
 	}
 	
