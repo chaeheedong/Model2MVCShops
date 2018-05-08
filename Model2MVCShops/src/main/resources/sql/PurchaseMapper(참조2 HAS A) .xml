@@ -13,11 +13,11 @@
   		<result property="paymentOption"		column="PAYMENT_OPTION" jdbcType="CHAR"/>
   		<result property="receiverName" 		column="RECEIVER_NAME" 	jdbcType="VARCHAR"/>
   		<result property="receiverPhone" 		column="RECEIVER_PHONE" jdbcType="VARCHAR"/>
-  		<result property="divyAddr" 			column="DLVY_ADDR" 		jdbcType="VARCHAR"/>
-  		<result property="divyRequest" 			column="DLVY_REQUEST" 	jdbcType="VARCHAR"/>
+  		<result property="dlvyAddr" 			column="DLVY_ADDR" 		jdbcType="VARCHAR"/>
+  		<result property="dlvyRequest" 			column="DLVY_REQUEST" 	jdbcType="VARCHAR"/>
   		<result property="tranCode" 			column="TRAN_STATUS_CODE" 	jdbcType="CHAR"/>
   		<result property="orderDate" 			column="ORDER_DATE" 		jdbcType="DATE"/>  		 
-  		<result property="divyDate" 			column="DLVY_DATE"		jdbcType="DATE"/>
+  		<result property="dlvyDate" 			column="DLVY_DATE"		jdbcType="DATE"/>
   	</resultMap>
   	
 	<select id="getPurchase" parameterType="int" resultMap="purchaseSelectMap">
@@ -37,11 +37,11 @@
 					#{paymentOption:CHAR},
 					#{receiverName:VARCHAR},
 					#{receiverPhone:VARCHAR},
-					#{divyAddr:VARCHAR},
-					#{divyRequest:VARCHAR},
+					#{dlvyAddr:VARCHAR},
+					#{dlvyRequest:VARCHAR},
 					#{tranCode:CHAR},
 					SYSDATE,
-					#{divyDate:DATE} )
+					#{dlvyDate:DATE} )
 	</insert>
   	
 </mapper>

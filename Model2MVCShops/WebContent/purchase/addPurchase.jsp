@@ -46,15 +46,15 @@
 	</tr>
 	<tr>
 		<td>구매자주소</td>
-		<td>${ purchase.divyAddr }</td>
+		<td>${ purchase.dlvyAddr }</td>
 	</tr>
 		<tr>
 		<td>구매요청사항</td>
-		<td>${ purchase.divyRequest }</td>
+		<td>${ purchase.dlvyRequest }</td>
 	</tr>
 	<tr>
 		<td>배송희망일자</td>
-		<td>${ purchase.divyDate }</td>
+		<td>${ purchase.dlvyDate }</td>
 	</tr>
 </table>
 </form>

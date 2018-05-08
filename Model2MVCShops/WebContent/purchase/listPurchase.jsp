@@ -19,7 +19,7 @@
 
 <div style="width: 98%; margin-left: 10px;">
 
-<form name="detailForm" action="/listUser.do" method="post">
+<form name="detailForm" action="/listPurchase.do?userId=${ user.getUserId() }" method="post">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -61,7 +61,7 @@
 		<c:set var="i" value="${ i + 1 }" />
 		<tr class="ct_list_pop">
 			<td align="center">
-				<a href="/getPurchase.do?tranNo=${ list.tranNo }">${ i + 1 }</a>
+				<a href="/getPurchase.do?tranNo=${ list.tranNo }">a</a>
 			</td>
 			<td></td>
 			<td align="left">

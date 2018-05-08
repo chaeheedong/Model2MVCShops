@@ -8,9 +8,9 @@ import com.model2.mvc.common.Search;
 public class Purchase extends Search {
 	
 	private User buyer;
-	private String divyAddr;
-	private String divyDate;
-	private String divyRequest;
+	private String dlvyAddr;
+	private String dlvyDate;
+	private String dlvyRequest;
 	private Date orderDate;
 	private String paymentOption;
 	private Product purchaseProd;
@@ -28,23 +28,23 @@ public class Purchase extends Search {
 	public void setBuyer(User buyer) {
 		this.buyer = buyer;
 	}
-	public String getDivyAddr() {
-		return divyAddr;
+	public String getDlvyAddr() {
+		return dlvyAddr;
 	}
-	public void setDivyAddr(String divyAddr) {
-		this.divyAddr = divyAddr;
+	public void setDlvyAddr(String dlvyAddr) {
+		this.dlvyAddr = dlvyAddr;
 	}
-	public String getDivyDate() {
-		return divyDate;
+	public String getDlvyDate() {
+		return dlvyDate;
 	}
-	public void setDivyDate(String divyDate) {
-		this.divyDate = divyDate;
+	public void setDlvyDate(String dlvyDate) {
+		this.dlvyDate = dlvyDate;
 	}
-	public String getDivyRequest() {
-		return divyRequest;
+	public String getDlvyRequest() {
+		return dlvyRequest;
 	}
-	public void setDivyRequest(String divyRequest) {
-		this.divyRequest = divyRequest;
+	public void setDlvyRequest(String dlvyRequest) {
+		this.dlvyRequest = dlvyRequest;
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -92,8 +92,8 @@ public class Purchase extends Search {
 	@Override
 	public String toString() {
 		return "\n\n======================================================================\n"
-				+ "Purchase : \nbuyer=" + buyer + ",\n divyAddr=" + divyAddr
-				+ ",\n divyDate=" + divyDate + ",\n divyRequest=" + divyRequest
+				+ "Purchase : \nbuyer=" + buyer + ",\n dlvyAddr=" + dlvyAddr
+				+ ",\n dlvyDate=" + dlvyDate + ",\n dlvyRequest=" + dlvyRequest
 				+ ",\n orderDate=" + orderDate + ",\n paymentOption="
 				+ paymentOption + ",\n purchaseProd=" + purchaseProd
 				+ ",\n receiverName=" + receiverName + ",\n receiverPhone="
