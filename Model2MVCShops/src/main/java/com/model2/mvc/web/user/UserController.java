@@ -21,6 +21,7 @@ import com.model2.mvc.service.user.UserService;
 
 //==> 회원관리 Controller
 @Controller
+@RequestMapping("/user/*")
 public class UserController {
 
 	/// Field
@@ -44,7 +45,7 @@ public class UserController {
 	// @Value("#{commonProperties['pageSize'] ?: 2}")
 	int pageSize;
 
-	@RequestMapping("/addUserView.do")
+	@RequestMapping("/addUserView")
 	public String addUserView() throws Exception {
 
 		System.out.println("/addUserView.do");
@@ -52,7 +53,7 @@ public class UserController {
 		return "redirect:/user/addUserView.jsp";
 	}
 
-	@RequestMapping("/addUser.do")
+	@RequestMapping("/addUser")
 	public String addUser(@ModelAttribute("user") User user) throws Exception {
 
 		System.out.println("/addUser.do");
@@ -62,7 +63,7 @@ public class UserController {
 		return "redirect:/user/loginView.jsp";
 	}
 
-	@RequestMapping("/getUser.do")
+	@RequestMapping("/getUser")
 	public String getUser(@RequestParam("userId") String userId, Model model) throws Exception {
 
 		System.out.println("/getUser.do");
@@ -74,7 +75,7 @@ public class UserController {
 		return "forward:/user/getUser.jsp";
 	}
 
-	@RequestMapping("/updateUserView.do")
+	@RequestMapping("/updateUserView")
 	public String updateUserView(@RequestParam("userId") String userId, Model model) throws Exception {
 
 		System.out.println("/updateUserView.do");
@@ -86,7 +87,7 @@ public class UserController {
 		return "forward:/user/updateUser.jsp";
 	}
 
-	@RequestMapping("/updateUser.do")
+	@RequestMapping("/updateUser")
 	public String updateUser(@ModelAttribute("user") User user, Model model, HttpSession session) throws Exception {
 
 		System.out.println("/updateUser.do");
@@ -98,10 +99,10 @@ public class UserController {
 			session.setAttribute("user", user);
 		}
 
-		return "redirect:/getUser.do?userId=" + user.getUserId();
+		return "redirect:/user/getUser.do?userId=" + user.getUserId();
 	}
 
-	@RequestMapping("/loginView.do")
+	@RequestMapping("/loginView")
 	public String loginView() throws Exception {
 
 		System.out.println("/loginView.do");
@@ -109,7 +110,7 @@ public class UserController {
 		return "redirect:/user/loginView.jsp";
 	}
 
-	@RequestMapping("/login.do")
+	@RequestMapping("/login")
 	public String login(@ModelAttribute("user") User user, HttpSession session) throws Exception {
 
 		System.out.println("/login.do");
@@ -123,7 +124,7 @@ public class UserController {
 		return "redirect:/index.jsp";
 	}
 
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout")
 	public String logout(HttpSession session) throws Exception {
 
 		System.out.println("/logout.do");
@@ -133,7 +134,7 @@ public class UserController {
 		return "redirect:/index.jsp";
 	}
 
-	@RequestMapping("/checkDuplication.do")
+	@RequestMapping("/checkDuplication")
 	public String checkDuplication(@RequestParam("userId") String userId, Model model) throws Exception {
 
 		System.out.println("/checkDuplication.do");
@@ -146,7 +147,7 @@ public class UserController {
 		return "forward:/user/checkDuplication.jsp";
 	}
 
-	@RequestMapping("/listUser.do")
+	@RequestMapping("/listUser")
 	public String listUser(@ModelAttribute("search") Search search, Model model, HttpServletRequest request)
 			throws Exception {
 
