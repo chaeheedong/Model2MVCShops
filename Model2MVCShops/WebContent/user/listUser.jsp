@@ -10,7 +10,6 @@
 
 <script type="text/javascript">
 
-	// 검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScrpt 이용  
 	function fncGetList(currentPage) {
 		document.getElementById("currentPage").value = currentPage;
 	   	document.detailForm.submit();		
@@ -107,7 +106,6 @@
 </table>
 
 
-<!-- PageNavigation Start... -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top:10px;">
 	<tr>
 		<td align="center">
@@ -118,7 +116,6 @@
     	</td>
 	</tr>
 </table>
-<!-- PageNavigation End... -->
 
 </form>
 </div>

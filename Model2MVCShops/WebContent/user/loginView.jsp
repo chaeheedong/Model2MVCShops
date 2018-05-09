@@ -25,7 +25,6 @@
 	    document.loginForm.submit();
 	}
 	
-	//Call Back Method 이용 onload 시 Event 처리
 	window.onload = function(){
 		document.getElementById("userId").focus();
 	}

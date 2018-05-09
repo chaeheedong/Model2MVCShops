@@ -11,7 +11,6 @@
 <script type="text/javascript">
 
 function fncUpdateUser() {
-	// Form 유효성 검증
 	var name=document.detailForm.userName.value;
 	
 	if(name == null || name.length <1){
@@ -50,7 +49,6 @@ function resetData() {
 
 <form name="detailForm"  method="post" >
 
-<%--<input type="hidden" name="userId" value="<%=user.getUserId() %>"> --%>
 <input type="hidden" name="userId" value="${user.userId }">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
@@ -82,7 +80,6 @@ function resetData() {
 			아이디 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" />
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<%--<td class="ct_write01"><%=user.getUserId() %>	</td> --%>
 		<td class="ct_write01">${user.userId}	</td>
 	</tr>
 	
@@ -96,7 +93,6 @@ function resetData() {
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<%-- <input type="text" name="userName" value="<%=user.getUserName() %>" class="ct_input_g" style="width:100px; height:19px"  maxLength="50" >--%>
 			<input 	type="text" name="userName" value="${user.userName}" class="ct_input_g" 
 							style="width:100px; height:19px"  maxLength="50" >
 		</td>
@@ -110,7 +106,6 @@ function resetData() {
 		<td width="104" class="ct_write">주소</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<%--<input type="text" name="addr" value="<%=user.getAddr() %>" class="ct_input_g" style="width:370px; height:19px"  maxLength="100">--%>
 			<input 	type="text" name="addr" value="${user.addr}" class="ct_input_g" 
 							style="width:370px; height:19px"  maxLength="100">
 		</td>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
@@ -18,33 +19,25 @@ import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.product.ProductService;
 
-//==> 회원관리 Controller
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
 
-	/// Field
 	@Autowired
 	@Qualifier("productServiceImpl")
 	private ProductService productService;
-	// setter Method 구현 않음
 
 	public ProductController() {
 		System.out.println(this.getClass());
 	}
 
-	// ==> classpath:config/common.properties , classpath:config/commonservice.xml
-	// 참조 할것
-	// ==> 아래의 두개를 주석을 풀어 의미를 확인 할것
 	 @Value("#{commonProperties['pageUnit']}")
-	//@Value("#{commonProperties['pageUnit'] ?: 10}")
 	int pageUnit;
 
 	@Value("#{commonProperties['pageSize']}")
-	//@Value("#{commonProperties['pageSize'] ?: 10}")
 	int pageSize;
 
-	@RequestMapping("/addProductView")
+	@RequestMapping(value="/addProductView", method=RequestMethod.GET)
 	public String addProductView() throws Exception {
 
 		System.out.println("/addProductView.do");
@@ -52,47 +45,41 @@ public class ProductController {
 		return "redirect:/product/addProductView.jsp";
 	}
 
-	@RequestMapping("/addProduct")
+	@RequestMapping(value="/addProduct", method=RequestMethod.POST)
 	public String addProduct(@ModelAttribute("product") Product product) throws Exception {
 
 		System.out.println("/addProduct.do");
 		System.out.println(product.toString());
-		// Business Logic
 		productService.addProduct(product);
 
 		return "redirect:/product/default.jsp";
 	}
 	
-	@RequestMapping("/getProduct")
+	@RequestMapping(value="/getProduct", method= {RequestMethod.GET, RequestMethod.POST})
 	public String getProduct(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 
 		System.out.println("/getProduct.do");
-		// Business Logic
 		Product product = productService.getProduct(prodNo);
-		// Model 과 View 연결
 		model.addAttribute("product", product);
 
 		return "forward:/product/getProduct.jsp";
 	}
 
-	@RequestMapping("/updateProductView")
+	@RequestMapping(value="/updateProductView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String updateProductView(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 
 		System.out.println("/updateProductView.do");
 		System.out.println(prodNo);
-		// Business Logic
 		Product product = productService.getProduct(prodNo);
-		// Model 과 View 연결
 		model.addAttribute("product", product);
 		
 		return "forward:/product/updateProductView.jsp";
 	}
 
-	@RequestMapping("/updateProduct")
+	@RequestMapping(value="/updateProduct", method=RequestMethod.POST)
 	public String updateProduct(@ModelAttribute("product") Product product) throws Exception {
 
 		System.out.println("/updateProduct.do");
-		// Business Logic
 		productService.updateProduct(product);
 		
 		System.out.println(product.toString());
@@ -100,7 +87,7 @@ public class ProductController {
 		return "redirect:/product/getProduct?prodNo=" + product.getProdNo();
 	}
 
-	@RequestMapping("/listProduct")
+	@RequestMapping(value="/listProduct", method= {RequestMethod.GET, RequestMethod.POST})
 	public String listProduct(@ModelAttribute("search") Search search, Model model, HttpServletRequest request)
 			throws Exception {
 
@@ -112,7 +99,6 @@ public class ProductController {
 
 		search.setPageSize(pageSize);
 
-		// Business logic 수행
 		Map<String, Object> map = productService.getProductList(search);
 
 		Page resultPage = new Page(search.getCurrentPage(), ((Integer) map.get("totalCount")).intValue(), pageUnit,
@@ -125,7 +111,6 @@ public class ProductController {
 		
 		System.out.println("---->" + map.get("list"));
 		
-		// Model 과 View 연결
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("userId", userId);

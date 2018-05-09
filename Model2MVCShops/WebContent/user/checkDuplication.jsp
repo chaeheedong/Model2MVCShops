@@ -20,7 +20,6 @@ window.onload = function(){
 }
 
 function fncCheckDuplication() {
-	// Form 유효성 검증
 	if(document.detailForm.userId.value != null && document.detailForm.userId.value.length >0) {
 	    document.detailForm.action='/user/checkDuplication';
 	    document.detailForm.submit();
@@ -63,9 +62,7 @@ function fncUseId() {
 		</td>
 	</tr>
 </table>
-<!-- 타이틀 끝 -->
 
-<!-- 검색결과 시작 -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td height="32" style="padding-left:12px;">
@@ -88,9 +85,7 @@ function fncUseId() {
 	</tr>
 	
 </table>
-<!-- 검색결과 끝 -->
 
-<!-- 등록 테이블시작 -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:13px;">
 	
 	<tr>
@@ -101,7 +96,6 @@ function fncUseId() {
 		<td width="104" class="ct_write">아이디 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"></td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<!-- 테이블 시작 -->
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="105">
@@ -128,7 +122,6 @@ function fncUseId() {
 					
 				</tr>
 			</table>
-			<!-- 테이블 끝 -->
 		</td>
 	</tr>
 
@@ -137,9 +130,7 @@ function fncUseId() {
 	</tr>
 	
 </table>
-<!-- 등록테이블 끝 -->
 
-<!-- 버튼 시작 -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top:10px;">
 	<tr>
 		<td align="center">
@@ -171,7 +162,6 @@ function fncUseId() {
 		</td>
 	</tr>
 </table>
-<!-- 버튼 끝 -->
 </form>
 
 </body>
