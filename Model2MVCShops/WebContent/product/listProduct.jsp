@@ -22,7 +22,7 @@
 
 	<c:set var="value" value="${ choice }"></c:set>
 
-<form name="detailForm" action="/listProduct.do?menu=${ choice }" method="post">
+<form name="detailForm" action="/product/listProduct?menu=${ choice }" method="post">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -134,10 +134,10 @@
 		<td></td>
 		<c:choose>
 			<c:when test="${ choice eq 'manage' }">
-				<td align="left"><a href="/updateProductView.do?prodNo=${ list.prodNo }&menu=manage">${ list.prodName }</a></td>
+				<td align="left"><a href="/product/updateProductView?prodNo=${ list.prodNo }&menu=manage">${ list.prodName }</a></td>
 			</c:when>
 			<c:otherwise>
-				<td align="left"><a href="/getProduct.do?prodNo=${ list.prodNo }&userId=${ userId }&menu=search">${ list.prodName }</a></td>
+				<td align="left"><a href="/product/getProduct?prodNo=${ list.prodNo }&userId=${ userId }&menu=search">${ list.prodName }</a></td>
 			</c:otherwise>
 		</c:choose>		
 		<td></td>
