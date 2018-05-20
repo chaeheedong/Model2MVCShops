@@ -2,7 +2,9 @@ package com.model2.mvc.web.product;
 
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,17 +57,18 @@ public class ProductController {
 		return "redirect:/product/default.jsp";
 	}
 	
-	@RequestMapping(value="/getProduct", method= {RequestMethod.GET, RequestMethod.POST})
-	public String getProduct(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
+	@RequestMapping(value="/getProduct", method={RequestMethod.GET, RequestMethod.POST})
+	public String getProduct(@RequestParam("prodNo") int prodNo, Model model, Cookie[] cookies, HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		System.out.println("/getProduct.do");
 		Product product = productService.getProduct(prodNo);
+		
 		model.addAttribute("product", product);
 
 		return "forward:/product/getProduct.jsp";
 	}
 
-	@RequestMapping(value="/updateProductView", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/updateProductView", method={RequestMethod.GET, RequestMethod.POST})
 	public String updateProductView(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 
 		System.out.println("/updateProductView.do");
@@ -87,7 +90,7 @@ public class ProductController {
 		return "redirect:/product/getProduct?prodNo=" + product.getProdNo();
 	}
 
-	@RequestMapping(value="/listProduct", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/listProduct", method={RequestMethod.GET, RequestMethod.POST})
 	public String listProduct(@ModelAttribute("search") Search search, Model model, HttpServletRequest request)
 			throws Exception {
 

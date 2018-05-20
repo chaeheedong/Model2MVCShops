@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 
-function fncAddUser() {
+/* function fncAddUser() {
 	var id=document.detailForm.userId.value;
 	var pw=document.detailForm.password.value;
 	var pw_confirm=document.detailForm.password2.value;
@@ -46,7 +46,56 @@ function fncAddUser() {
 	document.detailForm.action='/user/addUser';
 	document.detailForm.submit();
 }
-
+ */
+ 
+ 	$(document).ready(function(){
+ 		
+ 		var id = userId.val();
+ 		var pw = password.val();
+ 		var pw_confirm = password2.val();
+ 		var name = username.val();
+ 		
+ 		if(id.val() == null || id.length < 1) {
+ 			
+ 			alert("아이디는 반드시 입력하셔야 합니다.");
+ 			id.focus();
+ 			return;
+ 			
+ 		}
+ 		
+ 		if(pw.val() == null || pw.length < 1) {
+ 			
+ 			alert("패스워드는 반드시 입력하셔야 합니다.");
+ 			pw.focus();
+ 			return;
+ 			
+ 		}
+ 		
+ 		if(pw_confirm.val() == null || pw2.length < 1) {
+ 			
+ 			alert("패스워드 확인은 반드시 입력하셔야 합니다.");
+ 			pw2.focus();
+ 			return;
+ 			
+ 		}
+ 		
+ 		if(name.val() == null || name.length < 1) {
+ 			
+ 			alert("이름은 반드시 입력하셔야 합니다.");
+ 			name.focus();
+ 			return;
+ 			
+ 		}
+ 		
+ 		if(pw.val() != pw_confirm.val()) {
+ 			
+ 			alert("비밀번호 확인이 일치하지 않습니다.");
+ 			return;
+ 			
+ 		}
+ 		
+ 	});
+ 
 function check_email(frm) {
 	alert
 	var email=document.detailForm.email.value;
@@ -136,7 +185,7 @@ function resetData() {
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="105">
-						<input 	type="text" name="userId" class="ct_input_bg" 
+						<input 	type="text" name="userId" id="userId" class="ct_input_bg" 
 										style="width:100px; height:19px"  maxLength="20" >
 					</td>
 					<td>
@@ -169,7 +218,7 @@ function resetData() {
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="password" name="password" class="ct_input_g" 
+			<input 	type="password" name="password" id="password" class="ct_input_g" 
 							style="width:100px; height:19px"  maxLength="10" minLength="6"  />
 		</td>
 	</tr>
@@ -184,7 +233,7 @@ function resetData() {
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="password" name="password2" class="ct_input_g" 
+			<input 	type="password" name="password2" id="password2" class="ct_input_g" 
 							style="width:100px; height:19px"  maxLength="10" minLength="6"  />
 		</td>
 	</tr>
@@ -199,7 +248,7 @@ function resetData() {
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="userName" class="ct_input_g" 
+			<input 	type="text" name="userName" id="userName" class="ct_input_g" 
 							style="width:100px; height:19px"  maxLength="50" />
 		</td>
 	</tr>

@@ -5,29 +5,34 @@
 <title>로그인 화면</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
-
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 	function fncLogin() {
-		var id=document.loginForm.userId.value;
-		var pw=document.loginForm.password.value;
+		/* var id = document.loginForm.userId.value;
+		var pw = document.loginForm.password.value; */
+		var id = $('#userId').val();
+		var pw = $('#password').val();
 		if(id == null || id.length <1) {
 			alert('ID 를 입력하지 않으셨습니다.');
-			document.loginForm.userId.focus();
-			return;
+			/* document.loginForm.userId.focus(); */
+			$('#userId').focus();
+			return false;
 		}
 		
 		if(pw == null || pw.length <1) {
 			alert('패스워드를 입력하지 않으셨습니다.');
-			document.loginForm.password.focus();
-			return;
+			/* document.loginForm.password.focus(); */
+			$('#password').focus();
+			return false;
 		}
 	    document.loginForm.submit();
 	}
 	
 	window.onload = function(){
 		document.getElementById("userId").focus();
-	}
+	} 
 
 </script>
 
@@ -76,7 +81,7 @@
                 	<img src="/images/text_id.gif" width="100" height="30"/>
                 </td>
                 <td height="30">
-                  <input 	type="text" name="userId"  class="ct_input_g" 
+                  <input 	type="text" name="userId" id="userId" class="ct_input_g" 
                   				style="width:180px; height:19px"  maxLength='50'/>          
           		</td>
                 <td width="20" height="30">&nbsp;</td>
@@ -87,7 +92,7 @@
                 	<img src="/images/text_pas.gif" width="100" height="30"/>
                 </td>
                 <td height="30">                    
-                    <input 	type="password" name="password" class="ct_input_g" 
+                    <input 	type="password" name="password" id="password" class="ct_input_g" 
                     				style="width:180px; height:19px"  maxLength="50" />
                 </td>
                 <td width="20" height="30">&nbsp;</td>
