@@ -69,43 +69,36 @@
 					#{dlvyDate:DATE} )
 	</insert>
 	
-	<!-- SQL : SELECT LIST -->
-	  <select id="getPurchaseList" parameterType="map" resultMap="purchaseSelectMap">
-  		SELECT *
-  		FROM ( SELECT inner_table.*, 
-  					  ROWNUM AS row_seq 
-  						FROM ( SELECT p.prod_no, 
-						  			  u.user_id, 
-						  			  p.prod_name, 
-						  			  u.cell_phone, 
-						  			  t.tran_status_code 
-								FROM transaction t, 
-									 product p, 
-									 users u 
-								WHERE t.prod_no = p.prod_no 
-								AND t.buyer_id = u.user_id 
-								AND u.user_id = #{buyerId, jdbcType=VARCHAR}
-								ORDER BY tran_no  ) inner_table
-				WHERE ROWNUM <![CDATA[<=]]> #{search.currentPage}*#{search.pageSize} )
-  		WHERE row_seq BETWEEN (#{search.currentPage}-1)*#{search.pageSize}+1
-  		AND #{search.currentPage}*#{search.pageSize}
-	 </select>
-	
-	<!-- SQL : SELECT ROW Count -->	 
-	 <select id="getTotalCount" parameterType="search" resultType="int">
-	  	
-	  	SELECT COUNT(*) 
-	  	FROM (SELECT 
-	  			p.prod_no, 
-	  			u.user_id, 
-	  			p.prod_name, 
-	  			u.cell_phone, 
-	  			t.tran_status_code 
-	  		  FROM product p, 
-	  		  	   users u, 
-	  		  	   transaction t 
-			  ) countTable
-	  			
-	 </select>
+	<select id="getPurchaseList" parameterType="map" resultMap="purchaseSelectMap">
+ 		  	SELECT * 
+	  		FROM ( SELECT inner_table.*, ROWNUM AS row_seq
+	  						FROM ( SELECT p.prod_no, 
+	  									  p.prod_name, 
+	  									  t.demailaddr, 
+	  									  t.receiver_phone, 
+	  									  t.tran_status_code, 
+	  									  t.tran_no, 
+	  									  t.dlvy_date, 
+	  									  t.dlvy_request, 
+	  									  t.order_data, 
+	  									  t.payment_option, 
+	  									  t.buyer_id 
+							FROM transaction t, 
+								 product p 
+							WHERE t.prod_no = p.prod_no 
+							AND t.buyer_id = #{buyerId} 
+							ORDER BY tran_no  ) inner_table 
+					WHERE ROWNUM &lt;= #{search.currentPage}*#{search.pageSize} ) 
+	  		WHERE row_seq BETWEEN (#{search.currentPage}-1)*#{search.pageSize}+1 
+	  		AND #{search.currentPage}*#{search.pageSize}
+	</select>
+
+	<select id="getTotalCount" parameterType="search" resultType="int">
+		SELECT COUNT(*) 
+		FROM( SELECT tran_no , 
+		  			 prod_no 
+		FROM transaction
+		) countTable
+	</select>
 	
 </mapper>

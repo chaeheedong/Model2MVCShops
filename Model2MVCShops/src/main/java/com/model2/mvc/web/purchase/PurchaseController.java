@@ -24,6 +24,7 @@ import com.model2.mvc.service.user.UserService;
 
 //==> 备概包府 Controller
 @Controller
+@RequestMapping("/purchase/*")
 public class PurchaseController {
 
 	@Autowired
@@ -53,7 +54,7 @@ public class PurchaseController {
 	// @Value("#{commonProperties['pageSize'] ?: 10}")
 	int pageSize;
 
-	@RequestMapping("/addPurchaseView.do")
+	@RequestMapping("/addPurchaseView")
 	public ModelAndView addPurchaseView(HttpServletRequest req, HttpSession session) throws Exception {
 
 		System.out.println("addPurchasView.do");
@@ -71,7 +72,7 @@ public class PurchaseController {
 		return mav;
 	}
 
-	@RequestMapping("/addPurchase.do")
+	@RequestMapping("/addPurchase")
 	public ModelAndView addPurchase(HttpServletRequest req, HttpSession session) throws Exception {
 
 		System.out.println("addPurchase.do");
@@ -107,7 +108,7 @@ public class PurchaseController {
 
 	}
 	
-	@RequestMapping("listPurchase.do")
+	@RequestMapping("listPurchase")
 	public ModelAndView listPurchase(@ModelAttribute("search") Search search, HttpServletRequest req, HttpSession session) throws Exception {
 		
 		System.out.println("listPurchase.do");
@@ -137,13 +138,4 @@ public class PurchaseController {
 		return mav;
 	}
 	
-	// 轰 眉农 肯己
-	// @RequestMapping("listPurchase.do")
-	// public ModelAndView listPurchase() {
-	//
-	// ModelAndView mav = new ModelAndView();
-	// mav.setViewName("forward:/purchase/listPurchase.jsp");
-	// return mav;
-	// }
-
 }

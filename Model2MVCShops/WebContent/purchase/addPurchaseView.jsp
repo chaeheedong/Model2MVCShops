@@ -21,7 +21,7 @@ function fncAddPurchase() {
 
 <body>
 
-<form name="addPurchase" method="post" action="/addPurchase.do">
+<form name="addPurchase" method="post" action="/purchase/addPurchase">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -160,7 +160,7 @@ function fncAddPurchase() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverAddr" class="ct_input_g" value="${ user.getAddr() }"
-							style="width: 100px; height: 19px" maxLength="20" 	value="서울시 서초구" />
+							style="width: 100px; height: 19px" maxLength="20" value="${ user.getAddr() }" />
 		</td>
 	</tr>
 	<tr>

@@ -83,7 +83,7 @@ function history(){
 			<c:if test="${ !empty user && user.role == 'user'}">
 			<tr>
 				<td class="Depth03">
-					<a href="/listPurchase.do"  target="rightFrame">구매이력조회</a>
+					<a href="/purchase/listPurchase?userId=${ user.getUserId() }"  target="rightFrame">구매이력조회</a>				</td>
 				</td>
 			</tr>
 			</c:if>

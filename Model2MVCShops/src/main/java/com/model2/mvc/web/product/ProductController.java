@@ -1,5 +1,6 @@
 package com.model2.mvc.web.product;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -57,18 +58,19 @@ public class ProductController {
 		return "redirect:/product/default.jsp";
 	}
 	
-	@RequestMapping(value="/getProduct", method={RequestMethod.GET, RequestMethod.POST})
-	public String getProduct(@RequestParam("prodNo") int prodNo, Model model, Cookie[] cookies, HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+	@RequestMapping(value="/getProduct", method= {RequestMethod.GET, RequestMethod.POST})
+	public String getProduct(@RequestParam("prodNo") int prodNo,HttpServletRequest req, Model model) throws Exception {
 
 		System.out.println("/getProduct.do");
 		Product product = productService.getProduct(prodNo);
-		
 		model.addAttribute("product", product);
-
+		
 		return "forward:/product/getProduct.jsp";
 	}
 
 	@RequestMapping(value="/updateProductView", method={RequestMethod.GET, RequestMethod.POST})
+
 	public String updateProductView(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 
 		System.out.println("/updateProductView.do");
