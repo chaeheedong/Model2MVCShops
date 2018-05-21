@@ -1,7 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page contentType="text/html; charset=EUC-KR" %>
+<<<<<<< HEAD
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+=======
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>    
+>>>>>>> branch 'master' of https://github.com/chaeheedong/Model2MVCShops.git
 
 <html>
 <head>
@@ -10,6 +14,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	당신이 열어본 상품을 알고 있다.
 <br/>
 <br/>
@@ -42,6 +47,17 @@
 		}
 	}
 %> --%>
+=======
+	당신이 열어본 상품을 알고 있다
+<br>
+<br>
+
+<c:forEach var="list" items="${ list }">
+<a href="/product/getProduct?prodNo=${ list }&menu=search"
+	target="rightFrame">${ list }</a>
+</c:forEach>
+<br>
+>>>>>>> branch 'master' of https://github.com/chaeheedong/Model2MVCShops.git
 
 </body>
 </html>

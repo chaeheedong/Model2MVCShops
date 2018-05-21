@@ -64,13 +64,21 @@ public class ProductController {
 
 		System.out.println("/getProduct.do");
 		Product product = productService.getProduct(prodNo);
+		
+		// Cookie[] cookies = req.getCookies();
+		// Map map = new HashMap();
+		// if(cookies != null) {
+		// for (int i = 0; i < cookies.length; i++) {
+		// map.put(cookies.getClass(), cookies[i]);
+		// }
+		// }
+		
 		model.addAttribute("product", product);
 		
 		return "forward:/product/getProduct.jsp";
 	}
-
-	@RequestMapping(value="/updateProductView", method={RequestMethod.GET, RequestMethod.POST})
-
+	
+	@RequestMapping(value="/updateProductView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String updateProductView(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
 
 		System.out.println("/updateProductView.do");
