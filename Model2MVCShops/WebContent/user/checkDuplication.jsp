@@ -28,7 +28,7 @@
 			//==> - keyCode 값 alert() 확인하는 것 으로 종료
 			$("#userId").on("keydown" , function(event) {
 				
-				alert("keyCode  : "+event.keyCode);
+				//alert("keyCode  : "+event.keyCode);
 				
 				if(event.keyCode == '13'){
 					//fncCheckDuplication();
@@ -48,7 +48,7 @@
 				//alert($("td.ct_btn:contains('중복확인')").html())
 				
 				// Form 유효성 검증
-				if( $("#userId").val() != null && $("#userId").val().length >0) {
+				if( $("#userId").val() != null && $("#userId").val().length > 0) {
 					$("form").attr("method" , "POST");
 				    $("form").attr("action" , "/user/checkDuplication");
 				    $("form").submit();

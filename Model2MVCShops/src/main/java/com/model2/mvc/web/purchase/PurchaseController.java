@@ -54,17 +54,15 @@ public class PurchaseController {
 	// @Value("#{commonProperties['pageSize'] ?: 10}")
 	int pageSize;
 
-	@RequestMapping("/addPurchaseView")
+	@RequestMapping(value = "/addPurchaseView")
 	public ModelAndView addPurchaseView(HttpServletRequest req, HttpSession session) throws Exception {
 
 		System.out.println("addPurchasView.do");
-		
+
 		String prodNoChange = req.getParameter("prod_no");
 		int prodNo = Integer.parseInt(prodNoChange);
 
 		Product product = productService.getProduct(prodNo);
-
-		// req.setAttribute("product", product);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("product", product);
@@ -72,11 +70,11 @@ public class PurchaseController {
 		return mav;
 	}
 
-	@RequestMapping("/addPurchase")
+	@RequestMapping(value = "/addPurchase")
 	public ModelAndView addPurchase(HttpServletRequest req, HttpSession session) throws Exception {
 
 		System.out.println("addPurchase.do");
-		
+
 		User user = new User();
 		Product product = new Product();
 		Purchase purchase = new Purchase();
@@ -107,14 +105,15 @@ public class PurchaseController {
 		return mav;
 
 	}
-	
-	@RequestMapping("listPurchase")
-	public ModelAndView listPurchase(@ModelAttribute("search") Search search, HttpServletRequest req, HttpSession session) throws Exception {
-		
+
+	@RequestMapping(value = "/listPurchase")
+	public ModelAndView listPurchase(@ModelAttribute("search") Search search, HttpServletRequest req,
+			HttpSession session) throws Exception {
+
 		System.out.println("listPurchase.do");
-		
+
 		String buyerId = req.getParameter("userId");
-		
+
 		if (search.getCurrentPage() == 0) {
 			search.setCurrentPage(1);
 		}
@@ -126,9 +125,9 @@ public class PurchaseController {
 
 		Page resultPage = new Page(search.getCurrentPage(), ((Integer) map.get("totalCount")).intValue(), pageUnit,
 				pageSize);
-		
+
 		System.out.println(resultPage);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", map.get("list"));
 		mav.addObject("resultPage", resultPage);
@@ -137,5 +136,5 @@ public class PurchaseController {
 		mav.setViewName("forward:/purchase/listPurchase.jsp");
 		return mav;
 	}
-	
+
 }

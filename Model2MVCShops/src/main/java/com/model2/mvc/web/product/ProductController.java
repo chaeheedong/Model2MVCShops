@@ -1,11 +1,10 @@
 package com.model2.mvc.web.product;
 
-import java.util.HashMap;
+import java.net.HttpCookie;
 import java.util.Map;
+import java.util.StringTokenizer;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -53,6 +52,18 @@ public class ProductController {
 
 		System.out.println("/addProduct.do");
 		System.out.println(product.toString());
+		
+		//Constructor : StringTokenizer(String str, String delim) : Constructs a string tokenizer for the specified string.
+		StringTokenizer str = new StringTokenizer(product.getManuDate(), "-");
+		//int countTokens() : Calculates the number of times that this tokenizer's nextToken method can be called before it generates an exception.
+		int count = str.countTokens();
+		String manuDates = "";
+		for(int i = 0; i < count; i++) {
+			//String nextToken() : Returns the next token from this string tokenizer.
+			manuDates += str.nextToken();
+		}
+		product.setManuDate(manuDates);
+		
 		productService.addProduct(product);
 
 		return "redirect:/product/default.jsp";
@@ -60,7 +71,7 @@ public class ProductController {
 	
 
 	@RequestMapping(value="/getProduct", method= {RequestMethod.GET, RequestMethod.POST})
-	public String getProduct(@RequestParam("prodNo") int prodNo,HttpServletRequest req, Model model) throws Exception {
+	public String getProduct(@RequestParam("prodNo") int prodNo ,HttpServletRequest req, Model model) throws Exception {
 
 		System.out.println("/getProduct.do");
 		Product product = productService.getProduct(prodNo);
@@ -89,13 +100,23 @@ public class ProductController {
 		return "forward:/product/updateProductView.jsp";
 	}
 
+	
 	@RequestMapping(value="/updateProduct", method=RequestMethod.POST)
 	public String updateProduct(@ModelAttribute("product") Product product) throws Exception {
 
 		System.out.println("/updateProduct.do");
-		productService.updateProduct(product);
+		
+		StringTokenizer str = new StringTokenizer(product.getManuDate(), "-");
+		int count = str.countTokens();
+		String manuDateChange = "";
+		for(int i = 0; i < count; i++) {
+			manuDateChange += str.nextToken();
+		}
+		product.setManuDate(manuDateChange);
 		
 		System.out.println(product.toString());
+		
+		productService.updateProduct(product);
 
 		return "redirect:/product/getProduct?prodNo=" + product.getProdNo();
 	}

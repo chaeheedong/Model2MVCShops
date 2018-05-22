@@ -9,9 +9,7 @@
 
 <title>Insert title here</title>
 
-<script type="text/javascript" src="../javascript/calendar.js">
-</script>
-
+<script type="text/javascript" src="../javascript/calendar.js"></script>
 <script type="text/javascript">
 function fncAddPurchase() {
 	document.addPurchase.submit();

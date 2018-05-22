@@ -90,7 +90,7 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top:10px;">
 	<tr>
 		<td align="center">
-		   <input type="hidden" id="currentPage" name="currentPage" value="1"/>	
+		   <input type="hidden" id="currentPage" name="currentPage" value=""/>	
 			
 			<jsp:include page="../common/pageNavigator.jsp"/>
 		

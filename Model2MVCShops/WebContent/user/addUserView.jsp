@@ -10,7 +10,6 @@
 	<title>회원가입</title>
 	
 	<link rel="stylesheet" href="/css/admin.css" type="text/css">
-	
 	<!-- CDN(Content Delivery Network) 호스트 사용 -->
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
@@ -134,6 +133,7 @@
 			//==> 1 과 3 방법 조합 : $("tagName.className:filter함수") 사용함.	
 			 $("td.ct_btn:contains('ID중복확인')").on("click" , function() {
 				//alert($("td.ct_btn:contains('ID중복확인')").html());
+				// var window = window.open(url, windowName, [windowFeatures]);
 				popWin 
 				= window.open("/user/checkDuplication.jsp",
 											"popWin", 
